@@ -4,17 +4,20 @@ chcp 65001 > nul
 
 :: ==========================================
 :: НАСТРОЙКА ПЕРЕД ТУРНИРОМ:
-:: Укажите английское имя папки турнира, как она будет называться на сайте
-set "TURNEY_NAME=ТестовыйФайл2627"
+:: 1. Имя папки на компьютере (в программе IsuCalcFS)
+set "COMP_FOLDER=ТестовыйФайл2627"
+
+:: 2. Как папка будет называться на сайте в интернете (ТОЛЬКО ЛАТИНИЦА!)
+set "SITE_FOLDER=test26"
 :: ==========================================
 
-echo [ЗАПУСК] Скрипт автоматизации активен для турнира: %TURNEY_NAME%
+echo [ЗАПУСК] Мониторинг папки: %COMP_FOLDER% -> Интернет-адрес: /%SITE_FOLDER%/
 echo Проверка обновлений каждые 10 секунд. Окно не закрывать!
 echo ----------------------------------------------------------------
 
 :loop
-:: Копируем результаты из IsuCalcFS в папку сайта
-robocopy "C:\IsuCalcFS\ТестовыйФайл2627\html" "C:\IsuOnline\%TURNEY_NAME%" /E /XO /NJH /NJS /NDL /NC 
+:: Копируем из русской папки программы в английскую папку сайта
+robocopy "C:\IsuCalcFS\%COMP_FOLDER%\html" "C:\IsuOnline\%SITE_FOLDER%" /E /XO /NJH /NJS /NDL /NC
 
 :: Переходим в рабочую папку Git
 cd /d "C:\IsuOnline"
@@ -25,7 +28,7 @@ if %errorlevel% equ 0 (
     echo [%TIME:~0,8%] 🔄 Обнаружены изменения в результатах. Отправка...
     
     git add .
-    git commit -m "Auto-update %TURNEY_NAME%: %TIME:~0,8%" >nul
+    git commit -m "Auto-update %SITE_FOLDER%: %TIME:~0,8%" >nul
     git push origin main >nul
     
     if %errorlevel% equ 0 (
