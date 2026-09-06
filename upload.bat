@@ -17,7 +17,7 @@ echo ----------------------------------------------------------------
 
 :loop
 :: Копируем из русской папки программы в английскую папку сайта
-robocopy "C:\IsuCalcFS\%COMP_FOLDER%\html" "C:\IsuOnline\%SITE_FOLDER%" /E /XO /NJH /NJS /NDL /NC
+robocopy "C:\IsuCalcFS\ТестовыйФайл2627\html" "C:\IsuOnline\test26" /E /XO /NJH /NJS /NDL /NC
 
 :: Переходим в рабочую папку Git
 cd /d "C:\IsuOnline"
