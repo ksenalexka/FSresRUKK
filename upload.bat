@@ -14,7 +14,7 @@ echo ----------------------------------------------------------------
 
 :loop
 :: Копируем результаты из IsuCalcFS в папку сайта
-robocopy "C:\IsuCalcFS\FestDinastia\html" "C:\IsuOnline\%TURNEY_NAME%" /E /XO /NJH /NJS /NDL /NC > nul
+robocopy "C:\IsuCalcFS\тестовыйфайл2627\html" "C:\IsuOnline\%TURNEY_NAME%" /E /XO /NJH /NJS /NDL /NC > nul
 
 :: Переходим в рабочую папку Git
 cd /d "C:\IsuOnline"
